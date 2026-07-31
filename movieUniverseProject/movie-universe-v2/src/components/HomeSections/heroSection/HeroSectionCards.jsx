@@ -29,7 +29,7 @@ export default function HeroSectionCards({ moviesList }) {
           </h1>
           <div className="flex">
             <p>{trending_movies[increment].release_date}</p>
-            <p>genre</p>
+            <p>genre remaining</p>
           </div>
           <div>
             <p>{trending_movies[increment].overview}</p>
