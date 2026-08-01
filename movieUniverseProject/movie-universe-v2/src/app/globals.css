@@ -1,18 +1,23 @@
 @import "tailwindcss";
 
-
-
 body {
-  background: #0d0c0c;
-  background: linear-gradient(90deg,rgba(13, 12, 12, 1) 0%, rgba(86, 88, 179, 1) 50%, rgba(25, 54, 112, 1) 100%);
+  background: #08061b;
+  /* background: linear-gradient(90deg,rgba(13, 12, 12, 1) 0%, rgba(86, 88, 179, 1) 50%, rgba(25, 54, 112, 1) 100%); */
+  background: linear-gradient(
+    90deg,
+    rgba(16, 12, 26, 1) 23%,
+    rgba(68, 39, 130, 1) 54%,
+    rgba(17, 6, 36, 1) 78%
+  );
+
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 
-.sidetabs:hover  h1 {
+.sidetabs:hover h1 {
   opacity: 1;
 }
-.sidetabs:hover  .links {
+.sidetabs:hover .links {
   color: #7b5bf5;
 }
 

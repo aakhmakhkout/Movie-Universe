@@ -52,5 +52,5 @@ export async function getDramaMovies() {
 export async function getMoviesGenreList() {
   const res = await fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}`);
   const data = await res.json();
-  return data.results;
+  return data.genres;
 }
