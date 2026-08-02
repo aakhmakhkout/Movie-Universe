@@ -8,20 +8,21 @@ import HeroSection from "@/components/HomeSections/heroSection/HeroSection";
 
 export default async function page() {
   return (
-    <div className="flex flex-col gap-10 overflow-hidden">
-      <section>
+    <div className="flex flex-col gap-5 w-full justify-center items-center">
+      <section className="w-full h-full bg-[#0a0417] p-2 border border-white/20 rounded-lg">
         <HeroSection />
       </section>
-      <section>
+      <section className="flex flex-col gap-5 bg-[#0a0417] w-full p-2 border border-white/20 rounded-lg">
         <ContinueWatching />
+
+        {catagories.map((items) => {
+          return (
+            <section key={items.id} className=" w-full ">
+              <OtherSections data={items} />
+            </section>
+          );
+        })}
       </section>
-      {catagories.map((items) => {
-        return (
-          <section key={items.id}>
-            <OtherSections data={items} />
-          </section>
-        );
-      })}
       <footer>
         <Footer />
       </footer>

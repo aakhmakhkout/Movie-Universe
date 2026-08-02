@@ -5,8 +5,6 @@ import {
   ListVideo,
   StarCheck,
 } from "lucide-react";
-import logo from "../../assets/logo3.png";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Sidebar() {
@@ -43,13 +41,9 @@ export default function Sidebar() {
     },
   ];
   return (
-    <div className="flex flex-col items-center gap-10 sticky top-0">
-      <div className="w-35 h-20">
-        <Image src={logo} alt="logo" className="w-40" />
-      </div>
-
-      <div className="h-150 w-full flex justify-center">
-        <ul className="flex flex-col h-full justify-around gap-5">
+    <div className="flex flex-col items-center w-25 gap-10 sticky top-23 bg-[#0a0417] min-h-screen mr-5 border-r border-t border-white/20 rounded-r-lg">
+      <div className="h-180 w-full flex justify-center">
+        <ul className="flex flex-col h-full justify-center gap-10">
           {sideBarTabs.map((items) => {
             return (
               <li

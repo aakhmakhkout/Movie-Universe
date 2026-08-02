@@ -42,7 +42,7 @@ export default function ContinueWatching() {
   return (
     <div className="flex flex-col gap-5 ">
       <div>
-        <h1 className="font-bold text-3xl">Continue Watching</h1>
+        <h1 className="font-bold text-3xl p-2">Continue Watching</h1>
       </div>
       <div className="flex gap-10">
         {ContinueWatchingData.map((items) => {

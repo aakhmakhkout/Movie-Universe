@@ -7,7 +7,7 @@ export default async function HeroSection() {
   const trending_movies = await getTrendingMovies();
 
   return (
-    <div>
+    <div className="w-full h-full">
       <HeroSectionCards
         moviesList={{ trending_movies }}
         genres={{ genreIDs }}

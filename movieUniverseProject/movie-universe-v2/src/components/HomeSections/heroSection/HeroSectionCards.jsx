@@ -13,9 +13,9 @@ export default function HeroSectionCards({ moviesList, genres }) {
   });
   const imageSrc = getBackdrop(trending_movies[increment].backdrop_path);
   return (
-    <div>
+    <div className="w-full h-full flex justify-center">
       <div
-        className={`w-[98%] h-160 relative flex flex-col items-center rounded-xl`}
+        className={`w-full h-160 relative flex flex-col items-center rounded-xl`}
         style={{
           background: `linear-gradient(90deg,rgba(0, 0, 0, 0.83) 26%, rgba(255, 255, 255, 0) 54%, rgba(255, 255, 255, 0) 86%), url(${imageSrc})`,
           backgroundSize: "cover",
@@ -53,14 +53,17 @@ export default function HeroSectionCards({ moviesList, genres }) {
           <div className="w-140 text-sm text-white/70">
             <p>{trending_movies[increment].overview}</p>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="text-[yellow]">
-              <Star size={20} />
-            </span>
-            <p className="text-xl font-bold">
-              {trending_movies[increment].vote_average}
-            </p>
-            <p className="bg-[yellow] p-[2px_10px] rounded-lg text-black font-extrabold">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0.5">
+              <span className="text-[#e2b616]">
+                <Star size={20} strokeWidth={3} />
+              </span>
+              <p className="text-xl font-bold">
+                {trending_movies[increment].vote_average}
+              </p>
+            </div>
+            <span>•</span>
+            <p className="bg-[#e2b616] p-[2px_10px] rounded-lg text-black font-extrabold">
               IMDB
             </p>
             <p className="font-bold text-white/70 text-sm">
