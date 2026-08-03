@@ -41,7 +41,7 @@ export default function Sidebar() {
     },
   ];
   return (
-    <div className="flex flex-col items-center w-25 gap-10 sticky top-23 bg-[#0a0417] min-h-screen mr-5 border-r border-t border-white/20 rounded-r-lg">
+    <div className="flex flex-col items-center w-25 gap-10 sticky top-23 bg-[#0A0713] min-h-screen mr-5 border-r border-t border-white/20 rounded-r-lg">
       <div className="h-180 w-full flex justify-center">
         <ul className="flex flex-col h-full justify-center gap-10">
           {sideBarTabs.map((items) => {

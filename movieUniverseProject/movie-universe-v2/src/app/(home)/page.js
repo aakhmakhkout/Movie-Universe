@@ -9,10 +9,10 @@ import HeroSection from "@/components/HomeSections/heroSection/HeroSection";
 export default async function page() {
   return (
     <div className="flex flex-col gap-5 w-full justify-center items-center">
-      <section className="w-full h-full bg-[#0a0417] p-2 border border-white/20 rounded-lg">
+      <section className="w-full h-full bg-[#0A0713] p-2 border border-white/20 rounded-lg">
         <HeroSection />
       </section>
-      <section className="flex flex-col gap-5 bg-[#0a0417] w-full p-2 border border-white/20 rounded-lg">
+      <section className="flex flex-col gap-5 bg-[#0A0713] w-full p-2 border border-white/20 rounded-lg">
         <ContinueWatching />
 
         {catagories.map((items) => {
