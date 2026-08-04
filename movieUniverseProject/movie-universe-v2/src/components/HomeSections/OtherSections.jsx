@@ -21,8 +21,8 @@ export default function OtherSections({ data }) {
       </div>
 
       <div className="flex gap-10 overflow-y-hidden flex-wrap Cards h-100 items-center justify-center">
-        {data.data.slice(0, 9).map(async (items) => {
-          const imageSrc = await getPoster(items.poster_path);
+        {data.data.slice(0, 9).map((items) => {
+          const imageSrc = getPoster(items.poster_path);
           return (
             <Link
               key={items.id}
