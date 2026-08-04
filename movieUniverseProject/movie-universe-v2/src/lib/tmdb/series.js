@@ -16,7 +16,7 @@ export async function getTopRatedSeries() {
   const data = await res.json();
   return data.results;
 }
-export async function getAiringSeries() {
+export async function getTopAiringSeries() {
   const res = await fetch(`${baseUrl}/tv/airing_today?api_key=${api_key}`);
   const data = await res.json();
   return data.results;

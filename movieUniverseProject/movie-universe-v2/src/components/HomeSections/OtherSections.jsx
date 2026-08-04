@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
+import { getPoster } from "@/lib/tmdb/images";
 
 export default function OtherSections({ data }) {
   return (
@@ -20,19 +21,23 @@ export default function OtherSections({ data }) {
       </div>
 
       <div className="flex gap-10 overflow-y-hidden flex-wrap Cards h-100 items-center justify-center">
-        {data.data.map((items) => {
+        {data.data.slice(0, 9).map(async (items) => {
+          const imageSrc = await getPoster(items.poster_path);
           return (
             <Link
               key={items.id}
               href={`${data.path}/${items.slug}`}
               className="w-50 h-90 flex flex-col gap-2 cursor-pointer group/Card outline-none"
             >
-              <div className="w-50 h-75 overflow-hidden rounded-xl group-hover/Card:border">
-                <Image
-                  src={items.cover}
-                  alt={items.title}
-                  className="w-full h-full"
-                />
+              <div className="w-50 h-75 overflow-hidden rounded-xl group-hover/Card:border relative">
+                {
+                  <Image
+                    src={imageSrc}
+                    alt={"something"}
+                    className="w-full h-full"
+                    fill
+                  />
+                }
               </div>
               <div className="flex justify-center items-center">
                 <h1 className="text-white/70 group-hover/Card:text-white">

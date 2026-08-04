@@ -88,6 +88,7 @@ export default function HeroSectionCards({ moviesList, genres }) {
           {trending_movies.map((items, idx) => {
             return (
               <p
+                key={idx}
                 className={`w-3 h-3 rounded-full bg-black/30 ${increment === idx ? "bg-purple-500" : null}`}
               ></p>
             );
