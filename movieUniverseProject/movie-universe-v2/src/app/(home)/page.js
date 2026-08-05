@@ -3,7 +3,6 @@ import OtherSections from "@/components/HomeSections/OtherSections";
 import React from "react";
 import { categories } from "@/data/catagoriesData";
 import Footer from "@/components/layout/Footer";
-import { getTrendingMovies } from "@/lib/tmdb/movies";
 import HeroSection from "@/components/HomeSections/heroSection/HeroSection";
 
 export default async function page() {
