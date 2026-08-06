@@ -40,7 +40,7 @@ export default function OtherSections({ data }) {
                 }
               </div>
               <div className="flex justify-center items-center">
-                <h1 className="text-white/70 group-hover/Card:text-white">
+                <h1 className="text-white/70 group-hover/Card:text-white text-center">
                   {items.title}
                 </h1>
               </div>
