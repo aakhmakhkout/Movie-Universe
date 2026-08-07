@@ -7,15 +7,12 @@ export default function HeroSectionCards({ moviesList, genres }) {
   const [increment, setincrement] = useState(0);
   const { genreIDs } = genres;
   const { trending_movies } = moviesList;
-  console.log(trending_movies);
   const moviesGenre = genreIDs.filter((items) => {
     return trending_movies[increment].genre_ids.includes(items.id);
   });
   const imageSrc = getBackdrop(trending_movies[increment].backdrop_path);
   const rating = Math.trunc(trending_movies[increment].vote_average);
   const trendingMoviesLength = trending_movies.length;
-  console.log(trendingMoviesLength);
-  console.log(increment);
   return (
     <div className="w-full h-full flex justify-center relative">
       <div

@@ -1,11 +1,12 @@
 import ContinueWatching from "@/components/HomeSections/ContinueWatching";
 import OtherSections from "@/components/HomeSections/OtherSections";
-import React from "react";
-import { categories } from "@/data/catagoriesData";
+import React, { Suspense } from "react";
+import categoriesData from "@/data/catagoriesData";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/HomeSections/heroSection/HeroSection";
 
 export default async function page() {
+  const categories = await categoriesData();
   console.log(categories);
   return (
     <div className="flex flex-col gap-5 w-full justify-center items-center">
@@ -18,7 +19,9 @@ export default async function page() {
         {categories.map((items) => {
           return (
             <section key={items.id} className=" w-full ">
-              <OtherSections data={items} />
+              <Suspense fallback={"loading"}>
+                <OtherSections data={items} />
+              </Suspense>
             </section>
           );
         })}

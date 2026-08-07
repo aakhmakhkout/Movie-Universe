@@ -24,8 +24,9 @@ export default async function page() {
                 <Image
                   src={imageSrc}
                   alt={items.title}
-                  fill
                   className="w-full h-full object-cover"
+                  fill
+                  sizes="20vw"
                 />
               </div>
               <div className="flex justify-center items-center min-h-8 ">

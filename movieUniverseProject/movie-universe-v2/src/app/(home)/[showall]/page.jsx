@@ -1,12 +1,12 @@
-import { categories } from "@/data/catagoriesData";
+import categoriesData from "@/data/catagoriesData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getPoster } from "@/lib/tmdb/images";
 
-export default async function page({ params }) {
+export default async function ShowAll({ params }) {
   const { showall } = await params;
-
+  const categories = await categoriesData();
   const catagory = categories.find((items) => {
     return items.path === showall;
   });
@@ -27,7 +27,7 @@ export default async function page({ params }) {
             return (
               <Link
                 key={items.id}
-                href={`${showall}/${items.slug}`}
+                href={`${showall}/${items.id}`}
                 className="w-50 h-90 flex flex-col gap-2 cursor-pointer group/Card outline-none"
               >
                 <div className="w-50 h-75 overflow-hidden rounded-xl group-hover/Card:border relative">
@@ -36,6 +36,7 @@ export default async function page({ params }) {
                     alt={items?.media_type === "tv" ? items.name : items.title}
                     className="w-full h-full"
                     fill
+                    sizes="10vw"
                   />
                 </div>{" "}
                 <div className="flex justify-center items-center">

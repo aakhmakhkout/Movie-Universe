@@ -1,24 +1,38 @@
-import { detailedData } from "@/data/detailedData";
 import { ChevronLeft, Film, Clapperboard } from "lucide-react";
+import categoriesData from "@/data/catagoriesData";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { getPoster } from "@/lib/tmdb/images";
 
 export default async function page({ params }) {
   const { showall, details } = await params;
-
-  const currentObj = detailedData.find((items) => {
-    return items.slug === details;
+  const categories = await categoriesData();
+  console.log(categories);
+  const currentObj = categories.find((items) => {
+    return showall === items.path;
   });
+  console.log(currentObj);
+
+  const currentData = currentObj.data.find(
+    (items) => items.id === parseInt(details),
+  );
+  console.log(currentData);
 
   if (currentObj === undefined) {
     return notFound();
   }
 
+  const imageSrc = getPoster(currentData.backdrop_path);
   return (
     <div
-      className="w-full h-screen bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: `url(${currentObj.bg.src})` }}
+      className="w-full h-screen"
+      style={{
+        backgroundImage: `url(${imageSrc})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="absolute inset-0 bg-black/70 "></div>
 
@@ -33,14 +47,14 @@ export default async function page({ params }) {
           <div className="flex w-full justify-between">
             <div className="w-[30%] flex flex-col gap-12 ml-30">
               <h1 className="uppercase font-bold text-6xl">
-                {currentObj.title}
+                {currentData.original_title}
               </h1>
 
               <div className="flex font-bold gap-10 text-xl">
                 <p>{currentObj.runtime} min</p>
                 <p>{currentObj.releaseYear}</p>
                 <p>
-                  {currentObj.rating}{" "}
+                  {currentData.vote_average}{" "}
                   <span className="bg-[#f5c518] text-black p-1 rounded-sm text-base">
                     IMDB
                   </span>
@@ -50,7 +64,7 @@ export default async function page({ params }) {
               <div className="flex flex-col gap-3">
                 <h1 className="text-white/30 font-bold">GENRES</h1>
                 <div className="flex gap-5 flex-wrap">
-                  {currentObj.genre.map((items, idx) => {
+                  {/* {currentData.genr.map((items, idx) => {
                     return (
                       <p
                         key={idx}
@@ -59,7 +73,7 @@ export default async function page({ params }) {
                         {items}
                       </p>
                     );
-                  })}
+                  })} */}
                 </div>
               </div>
 
@@ -73,7 +87,7 @@ export default async function page({ params }) {
               <div className="flex flex-col gap-3">
                 <h1 className="text-white/30 font-bold">CAST</h1>
                 <div className="flex gap-5 flex-wrap">
-                  {currentObj.cast.map((items, idx) => {
+                  {/* {currentObj.cast.map((items, idx) => {
                     return (
                       <p
                         key={idx}
@@ -82,7 +96,7 @@ export default async function page({ params }) {
                         {items}
                       </p>
                     );
-                  })}
+                  })} */}
                 </div>
               </div>
 

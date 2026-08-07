@@ -36,13 +36,20 @@ export default function OtherSections({ data }) {
                     alt={"something"}
                     className="w-full h-full"
                     fill
+                    sizes="10vw"
                   />
                 }
               </div>
               <div className="flex justify-center items-center">
-                <h1 className="text-white/70 group-hover/Card:text-white text-center">
-                  {items.title}
-                </h1>
+                {items?.media_type !== "tv" ? (
+                  <h1 className="text-white/70 group-hover/Card:text-white text-center">
+                    {items.original_title}
+                  </h1>
+                ) : (
+                  <h1 className="text-white/70 group-hover/Card:text-white text-center">
+                    {items.original_name}
+                  </h1>
+                )}
               </div>
             </Link>
           );
