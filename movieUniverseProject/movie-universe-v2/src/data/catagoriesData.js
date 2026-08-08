@@ -34,36 +34,42 @@ export default async function fetchCategories() {
       label: "Movies - Trending",
       data: trending_movies,
       path: "trendingmovies",
+      type: "movies",
     },
     {
       id: 2,
       label: "Movies - Top Rated",
       data: top_rated_movies,
       path: "topratedmovies",
+      type: "movies",
     },
     {
       id: 3,
       label: "Movies - Upcoming",
       data: upcoming_movies,
       path: "upcomingmovies",
+      type: "movies",
     },
     {
       id: 4,
       label: "Series - Trending",
       data: trending_series,
       path: "trendingseries",
+      type: "series",
     },
     {
       id: 5,
       label: "Series - Top Rated",
       data: top_rated_series,
       path: "topratedseries",
+      type: "series",
     },
     {
       id: 6,
       label: "Series - Airing",
       data: airing_series,
       path: "airingseries",
+      type: "series",
     },
   ];
   return categories;

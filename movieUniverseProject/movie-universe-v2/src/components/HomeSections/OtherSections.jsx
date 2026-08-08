@@ -26,7 +26,7 @@ export default function OtherSections({ data }) {
           return (
             <Link
               key={items.id}
-              href={`${data.path}/${items.slug}`}
+              href={`${data.path}/${items.id}`}
               className="w-50 h-90 flex flex-col gap-2 cursor-pointer group/Card outline-none"
             >
               <div className="w-50 h-75 overflow-hidden rounded-xl group-hover/Card:border relative">
@@ -41,7 +41,7 @@ export default function OtherSections({ data }) {
                 }
               </div>
               <div className="flex justify-center items-center">
-                {items?.media_type !== "tv" ? (
+                {data?.type === "movies" ? (
                   <h1 className="text-white/70 group-hover/Card:text-white text-center">
                     {items.original_title}
                   </h1>

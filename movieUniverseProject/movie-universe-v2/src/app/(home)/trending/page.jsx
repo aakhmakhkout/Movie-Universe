@@ -29,7 +29,7 @@ export default async function page() {
                   sizes="20vw"
                 />
               </div>
-              <div className="flex justify-center items-center min-h-8 ">
+              <div className="flex justify-center items-center min-h-10 ">
                 <h1 className="font-bold text-center">{items.title}</h1>
               </div>
               <div className="flex items-center justify-evenly text-sm text-white/70">

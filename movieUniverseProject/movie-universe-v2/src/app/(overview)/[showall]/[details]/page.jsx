@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPoster } from "@/lib/tmdb/images";
+import { getMoviesGenreList } from "@/lib/tmdb/movies";
 
 export default async function page({ params }) {
   const { showall, details } = await params;
@@ -17,11 +18,16 @@ export default async function page({ params }) {
   const currentData = currentObj.data.find(
     (items) => items.id === parseInt(details),
   );
-  console.log(currentData);
 
   if (currentObj === undefined) {
     return notFound();
   }
+
+  const genreIDs = await getMoviesGenreList();
+  console.log(genreIDs);
+  const moviesGenre = genreIDs.filter((items) => {
+    return currentData.genre_ids.includes(items.id);
+  });
 
   const imageSrc = getPoster(currentData.backdrop_path);
   return (
@@ -47,12 +53,18 @@ export default async function page({ params }) {
           <div className="flex w-full justify-between">
             <div className="w-[30%] flex flex-col gap-12 ml-30">
               <h1 className="uppercase font-bold text-6xl">
-                {currentData.original_title}
+                {currentData.type === "movies"
+                  ? currentData.original_title
+                  : currentData.name}
               </h1>
 
               <div className="flex font-bold gap-10 text-xl">
-                <p>{currentObj.runtime} min</p>
-                <p>{currentObj.releaseYear}</p>
+                <p>{currentData.vote_count} Votes</p>
+                <p>
+                  {currentData.type === "movies"
+                    ? currentData.release_date
+                    : currentData.first_air_date}
+                </p>
                 <p>
                   {currentData.vote_average}{" "}
                   <span className="bg-[#f5c518] text-black p-1 rounded-sm text-base">
@@ -64,45 +76,36 @@ export default async function page({ params }) {
               <div className="flex flex-col gap-3">
                 <h1 className="text-white/30 font-bold">GENRES</h1>
                 <div className="flex gap-5 flex-wrap">
-                  {/* {currentData.genr.map((items, idx) => {
+                  {moviesGenre.map((items, idx) => {
                     return (
                       <p
                         key={idx}
                         className="bg-white/10 p-[5px_25px] rounded-full"
                       >
-                        {items}
+                        {items.name}
                       </p>
                     );
-                  })} */}
+                  })}
                 </div>
               </div>
 
               <div className="flex flex-col gap-3">
                 <h1 className="text-white/30 font-bold">DIRECTORS</h1>
                 <p className="bg-white/10 p-[5px_25px] rounded-full w-40">
-                  {currentObj.directors}
+                  Not added
                 </p>
               </div>
 
               <div className="flex flex-col gap-3">
                 <h1 className="text-white/30 font-bold">CAST</h1>
                 <div className="flex gap-5 flex-wrap">
-                  {/* {currentObj.cast.map((items, idx) => {
-                    return (
-                      <p
-                        key={idx}
-                        className="bg-white/10 p-[5px_25px] rounded-full"
-                      >
-                        {items}
-                      </p>
-                    );
-                  })} */}
+                  <p>Not Added</p>
                 </div>
               </div>
 
               <div>
                 <h1 className="text-white/30 font-bold">SUMMARY</h1>
-                <p>{currentObj.summary}</p>
+                <p>{currentData.overview}</p>
               </div>
 
               <div className="flex  gap-10">
